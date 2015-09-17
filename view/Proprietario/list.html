@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block title %} SimplesVet - Gerenciamento de Proprietarios {%endblock %}
+
+{% block content %}
+	{% if owners is defined and owners is not empty %}
+		{% for owner in owners %}
+			-----------Proprietario-----------
+			<div id="owner">
+				<div id="idnum"><a href= {{ "index.php?controller=proprietario&action=edit&id=" ~ owner.id }} > ID: {{ owner.id }} </a></div>
+				<div id="name"> Nome: {{ owner.name }} </div>
+				<div id="remove"><a href= "index.php?controller=proprietario&action=delete&id={{owner.id}}">Remover</a></div>		
+			</div>
+			------------------------------------------				
+			<br/>
+		{% endfor %}
+		<a href="index.php?controller=proprietario&action=add"> Adicionar </a>
+	{% else %}
+		<p>just testing, no data to see here</p>
+	{% endif %}
+{% endblock %}

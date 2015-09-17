@@ -7,18 +7,8 @@
     </head>
     <body>
         {% block content %}
-        <a href="./Proprietario/create"> Gerenciar Proprietario</a><br/>
-        <a href="./Animal/create"> Gerenciar Animais</a><br/>
-
-        {#
-        <ul id="navigation">
-        {% for item in navigation %}
-            <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
-        {% endfor %}
-        </ul>
-
-        <h1>My Webpage</h1>
-        {{ var }} #}
+        <a href="index.php?controller=proprietario&action=show"> Gerenciar Proprietario</a><br/>
+        <a href="index.php?controller=animal&action=show"> Gerenciar Animais</a><br/>
         {% endblock %}
     </body>
-</html
+</html>

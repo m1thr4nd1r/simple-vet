@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block title %} SimplesVet - Gerenciamento de Animais {%endblock %}
+
+{% block content %}
+	{% if animals is defined and animals is not empty %}
+		{% for animal in animals %}
+			-----------Animal-----------
+			<div id="animal">
+				<div id="idnum"><a href= {{ "index.php?controller=animal&action=edit&id=" ~ animal.id }} > ID: {{ animal.id }} </a></div>
+				<div id="name"> Nome: {{ animal.name }} </div>
+				<div id="remove"><a href= "index.php?controller=animal&action=delete&id={{animal.id}}">Remover</a></div>		
+			</div>
+			------------------------------------------				
+			<br/>
+		{% endfor %}
+		<a href="index.php?controller=animal&action=add"> Adicionar </a>
+	{% else %}
+		<p>just testing, no data to see here</p>
+	{% endif %}
+{% endblock %}

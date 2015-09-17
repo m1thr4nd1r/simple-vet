@@ -1,11 +1,16 @@
-<form action="./list.php">
-	  Nome:<br>
-	  <input type="text" name="name" value="K9"><br>
-	  Especie:<br>
-	  <input type="text" name="specie" value="Ruskey"><br><br>
-	  Data de Nascimento:<br>
-	  <input type="text" name="date" value="19/07/10"><br><br>
-	  Observacoes<br>
-	  <input type="text" name="obs" value="Alergico a gatos"><br><br>
-	  <input type="submit" value="Submit">
-</form>
+{% extends "index.html" %}
+	{% block content %}
+		<form action="index.php?controller=animal&action=create" method="post">
+			  Nome:<br>
+			  <input type="text" name="name" value="K9"><br>
+			  Especie:<br>
+			  <input type="text" name="species" value="Ruskey"><br><br>
+			  Data de Nascimento:<br>
+			  <input type="text" name="birth" value="19/07/10"><br><br>
+			  Observacoes:<br>
+			  <input type="text" name="notes" value="Alergico a gatos"><br><br>
+			  Dono:<br>
+			  <input type="text" name="owner" value="2"><br><br>
+			  <input type="submit" value="Submit">
+		</form>
+	{% endblock %}

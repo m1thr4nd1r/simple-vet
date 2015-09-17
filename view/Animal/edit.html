@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+	{% block content %}
+		{% if animal is defined and animal is not empty %}
+		<form action="index.php?controller=animal&action=update&id={{ animal.id }}" method="post">
+			  Nome:<br>
+			  <input type="text" name="name" value="{{animal.name}}"><br>
+			  Especie:<br>
+			  <input type="text" name="species" value="{{animal.species}}"><br><br>
+			  Data de Nascimento:<br>
+			  <input type="text" name="birth" value="{{animal.birth}}"><br><br>
+			  Observacoes:<br>
+			  <input type="text" name="notes" value="
+			  {{animal.notes}}"><br><br>
+			  Dono:<br>
+			  <input type="text" name="owner" value="
+			  {{animal.owner}}"><br><br>
+			  <input type="submit" value="Submit">
+		</form>
+		{% else %}
+			<a> Nothing to see here </a>
+		{% endif %}		
+	{% endblock %}

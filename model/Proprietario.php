@@ -13,6 +13,11 @@ class ProprietarioModel
 		$this->address = '';
 	}
 
+	public function getId()
+	{
+		return $this->id;
+	}
+
 	public function getName()
 	{
 		return $this->name;
@@ -33,23 +38,28 @@ class ProprietarioModel
 		return $this->address;
 	}
 
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
+
 	public function setName($name)
 	{
-		$this->name = $name	
+		$this->name = $name;
 	}
 
 	public function setEmail($email)
 	{
-		$this->email = $email	
+		$this->email = $email;
 	}
 
 	public function setPhone($phone)
 	{
-		$this->phone = $phone	
+		$this->phone = $phone;	
 	}
 
 	public function setAddress($address)
 	{
-		$this->address = $address	
+		$this->address = $address;
 	}
 }
