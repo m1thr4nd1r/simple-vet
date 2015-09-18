@@ -61,14 +61,17 @@ class ProprietarioController
     function edit($id)
     {
     	$owner = $this->selectById($id);
+    	$animals = $this->selectAnimalByOwner($id);
+    	// var_dump($animals);
 		echo $this->twig->render('Proprietario/edit.html', array (
-				'owner' => $owner
+				'owner' => $owner,
+				'animals' => $animals
 			));
     }
 
 	function show ()
 	{
-		$owners = $this->selectall();
+		$owners = $this->selectAll();
 		echo $this->twig->render('Proprietario/list.html', array (
 				'owners' => $owners
 			));
@@ -82,7 +85,19 @@ class ProprietarioController
 		return $sth->fetch();
 	}
 
-	function selectall()
+	function selectAnimalByOwner($id)
+	{
+		$sql = 'SELECT * FROM animal WHERE owner = :id';
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+		$list = null;
+		foreach ($sth->fetchAll() as $animal) {
+			$list[] = $animal;
+		}
+		return $list;
+	}
+
+	function selectAll()
 	{
 		$list = null;
 		foreach ($this->db->query('SELECT * FROM owner') as $owner) {

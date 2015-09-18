@@ -5,7 +5,8 @@ include_once 'controller/Proprietario.php';
 include_once 'controller/Animal.php';
 
 $loader = new Twig_Loader_Filesystem('view');
-$twig = new Twig_Environment($loader);
+$twig = new Twig_Environment($loader, array( 'debug' => true ));
+$twig->addExtension(new Twig_Extension_Debug());
 $db = connect("us-cdbr-iron-east-02.cleardb.net", "heroku_37cb58925e40f47","b84259f8a37b3c","498b47c3");
 $proprietarioController = new ProprietarioController($twig,$db);
 $animalController = new animalController($twig,$db);

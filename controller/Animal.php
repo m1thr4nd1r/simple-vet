@@ -13,7 +13,8 @@ class AnimalController
 
     function add()
     {
-    	echo $this->twig->render('Animal/create.html');
+    	$owners = $this->selectAllOwners();
+    	echo $this->twig->render('Animal/create.html', array( 'owners' => $owners ));
     }
 
 	function create($name, $species, $birth, $notes, $owner)
@@ -65,17 +66,28 @@ class AnimalController
     function edit($id)
     {
     	$animal = $this->selectById($id);
+    	$owners = $this->selectAllOwners();
 		echo $this->twig->render('Animal/edit.html', array (
-				'animal' => $animal
+				'animal' => $animal,
+				'owners' => $owners
 			));
     }
 
 	function show ()
 	{
-		$animals = $this->selectall();
+		$animals = $this->selectAll();
 		echo $this->twig->render('Animal/list.html', array (
 				'animals' => $animals
 			));
+	}
+
+	function selectAllOwners()
+	{
+		$list = null;
+		foreach ($this->db->query('SELECT * FROM owner') as $owner) {
+		 	$list[] = $owner;
+		};
+		return $list;
 	}
 
 	function selectById($id)
@@ -86,7 +98,7 @@ class AnimalController
 		return $sth->fetch();
 	}
 
-	function selectall()
+	function selectAll()
 	{
 		$list = null;
 		foreach ($this->db->query('SELECT * FROM animal') as $animal) {

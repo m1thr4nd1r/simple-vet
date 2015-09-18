@@ -1,16 +1,43 @@
 {% extends "index.html" %}
-	{% block content %}
-		<form action="index.php?controller=animal&action=create" method="post">
-			  Nome:<br>
-			  <input type="text" name="name" value="K9"><br>
-			  Especie:<br>
-			  <input type="text" name="species" value="Ruskey"><br><br>
-			  Data de Nascimento:<br>
-			  <input type="text" name="birth" value="19/07/10"><br><br>
-			  Observacoes:<br>
-			  <input type="text" name="notes" value="Alergico a gatos"><br><br>
-			  Dono:<br>
-			  <input type="text" name="owner" value="2"><br><br>
-			  <input type="submit" value="Submit">
-		</form>
-	{% endblock %}
+
+{% block title %} SimplesVet - Adicionar Animal {%endblock %}
+
+{% block content %}
+	<form id="criar" action="index.php?controller=animal&action=create" method="post">
+		<div class="row col-sm-12">
+			<div class="col-xs-6 col-sm-4">
+				<span class="input-group-addon" id="basic-addon1">Nome</span>
+				<input type="text" name="name" class="form-control" placeholder="K9" aria-describedby="basic-addon1">
+			</div>
+			<div class="col-xs-6 col-sm-4">
+				<span class="input-group-addon" id="basic-addon1">Especie</span>
+				<input type="text" name="species" class="form-control" placeholder="Ruskey" aria-describedby="basic-addon1">
+			</div>
+			<div class="col-xs-6 col-sm-4">
+				<span class="input-group-addon" id="basic-addon1">Data de Nascimento</span>
+				<input type="text" name="birth" class="form-control" placeholder="19/07/10" aria-describedby="basic-addon1">
+			</div>
+		</div>
+		<div class="row col-sm-12">
+		<br/>
+			<div class="col-xs-6"> 
+				<span class="input-group-addon" id="basic-addon1">Observacoes</span>
+				<textarea name="notes" class="form-control" placeholder="Alergico a gatos" aria-describedby="basic-addon1"></textarea>
+			</div>
+			<div class="col-xs-6">
+				<span class="input-group-addon" id="basic-addon1">Dono</span>
+				<select name="owner" class="form-control" form="criar">
+					{% for owner in owners %}
+					<option value="{{owner.id}}">{{ owner.name }}</option>
+					{% endfor %}
+				</select>
+			</div>
+  	  	</div>
+  	  	<div class="row col-sm-12">
+  	  		<br/>
+	  	  	<div class="row col-xs-6 col-sm-4 col-md-offset-4">
+	  	  		<input type="submit" value="Criar" class="text-center form-control btn btn-primary btn-lg">		
+	  		</div>
+	  	</div>
+	</form>
+{% endblock %}
