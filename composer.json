@@ -2,6 +2,7 @@
 	"name": "vet-simple",
     "require": {
     	"twig/twig" : "~1.0",
-		"twbs/bootstrap": "^3.3"
+		"twbs/bootstrap": "^3.3",
+		"jasny/bootstrap": "^3.1"
     }
 }

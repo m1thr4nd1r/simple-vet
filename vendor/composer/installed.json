@@ -114,5 +114,44 @@
             "responsive",
             "web"
         ]
+    },
+    {
+        "name": "jasny/bootstrap",
+        "version": "v3.1.3",
+        "version_normalized": "3.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jasny/bootstrap.git",
+            "reference": "f4705f17fcae6eff441f8b582d6eb72ce9109fc6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jasny/bootstrap/zipball/f4705f17fcae6eff441f8b582d6eb72ce9109fc6",
+            "reference": "f4705f17fcae6eff441f8b582d6eb72ce9109fc6",
+            "shasum": ""
+        },
+        "require": {
+            "twitter/bootstrap": ">=3.1.0"
+        },
+        "time": "2014-05-06 03:57:04",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Arnold Daniels",
+                "email": "arnold@jasny.net",
+                "homepage": "http://www.jasny.net"
+            }
+        ],
+        "description": "The missing bootstrap components",
+        "homepage": "http://jasny.github.io/bootstrap",
+        "keywords": [
+            "bootstrap",
+            "css"
+        ]
     }
 ]

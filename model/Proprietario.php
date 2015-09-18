@@ -13,6 +13,15 @@ class ProprietarioModel
 		$this->address = '';
 	}
 
+	public function redefine($id,$name,$email,$phone,$address)
+	{
+		$this->id = $id;
+		$this->name = $name;
+		$this->email = $email;
+		$this->phone = $phone;
+		$this->address = $address;
+	}
+
 	public function getId()
 	{
 		return $this->id;

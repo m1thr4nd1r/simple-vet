@@ -4,9 +4,46 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "89f2b26857bbf0ef56d3997a5d5ed52b",
-    "content-hash": "f68b1b08c1e15884d478d8906f111b7c",
+    "hash": "1cbebb518962c4e3598d66d1a86b786c",
+    "content-hash": "46ec3b89773aee439b127e4af85c698a",
     "packages": [
+        {
+            "name": "jasny/bootstrap",
+            "version": "v3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jasny/bootstrap.git",
+                "reference": "f4705f17fcae6eff441f8b582d6eb72ce9109fc6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jasny/bootstrap/zipball/f4705f17fcae6eff441f8b582d6eb72ce9109fc6",
+                "reference": "f4705f17fcae6eff441f8b582d6eb72ce9109fc6",
+                "shasum": ""
+            },
+            "require": {
+                "twitter/bootstrap": ">=3.1.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Arnold Daniels",
+                    "email": "arnold@jasny.net",
+                    "homepage": "http://www.jasny.net"
+                }
+            ],
+            "description": "The missing bootstrap components",
+            "homepage": "http://jasny.github.io/bootstrap",
+            "keywords": [
+                "bootstrap",
+                "css"
+            ],
+            "time": "2014-05-06 03:57:04"
+        },
         {
             "name": "twbs/bootstrap",
             "version": "v3.3.5",

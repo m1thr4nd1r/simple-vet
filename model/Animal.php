@@ -14,6 +14,16 @@ class AnimalModel
 		$this->owner = '';
 	}
 
+	public function redefine($id, $name, $species, $birth, $notes, $owner)
+	{
+		$this->id = $id;
+		$this->name = $name;
+		$this->species = $species;
+		$this->birth = $birth;
+		$this->notes = $notes;
+		$this->owner = $owner;
+	}
+
 	public function getId()
 	{
 		return $this->id;

@@ -19,39 +19,30 @@ class AnimalController
 
 	function create($name, $species, $birth, $notes, $owner)
 	{
-		$this->model->setName($name);
-		$this->model->setSpecies($species);
-		$this->model->setBirth($birth);
-		$this->model->setNotes($notes);
-		$this->model->setOwner($owner);
+		$this->model->redefine(-1,$name,$species,$this->change_date($birth,"/"),$notes,$owner);
 
 		$sql = 'INSERT INTO animal (name,species,birth,notes,owner) VALUES (:name,:species,:birth,:notes,:owner)';
 		$sth = $this->db->prepare($sql);
-		$sth->execute( array(':name' => $name,
-							 ':species' => $species,
-							 ':birth' => $birth,
-							 ':notes' => $notes,
-							 ':owner' => $owner));
+		$sth->execute( array(':name' => $this->model->getName(),
+							 ':species' => $this->model->getSpecies(),
+							 ':birth' => $this->model->getBirth(),
+							 ':notes' => $this->model->getNotes(),
+							 ':owner' => $this->model->getOwner()));
 		$this->show();
 	}
 
 	function update($id, $name, $species, $birth, $notes, $owner)
 	{
-		$this->model->setId($id);
-		$this->model->setName($name);
-		$this->model->setSpecies($species);
-		$this->model->setBirth($birth);
-		$this->model->setNotes($notes);
-		$this->model->setOwner($owner);
+		$this->model->redefine($id,$name,$species,$this->change_date($birth,"/"),$notes,$owner);
 
 		$sql = 'UPDATE animal SET name=:name,species=:species,birth=:birth,notes=:notes,owner=:owner WHERE id = :id';
 		$sth = $this->db->prepare($sql);
-		$sth->execute( array(':id' => $id,
-							 ':name' => $name,
-							 ':species' => $species,
-							 ':birth' => $birth,
-							 ':notes' => $notes,
-							 ':owner' => $owner));
+		$sth->execute( array(':id' => $this->model->getId(),
+							 ':name' => $this->model->getName(),
+							 ':species' => $this->model->getSpecies(),
+							 ':birth' => $this->model->getBirth(),
+							 ':notes' => $this->model->getNotes(),
+							 ':owner' => $this->model->getOwner()));
 		$this->show();
 	}
 
@@ -65,13 +56,21 @@ class AnimalController
 
     function edit($id)
     {
-    	$animal = $this->selectById($id);
+    	$this->selectById($id);
     	$owners = $this->selectAllOwners();
+
 		echo $this->twig->render('Animal/edit.html', array (
-				'animal' => $animal,
+				'animal' => $this->model,
 				'owners' => $owners
 			));
     }
+
+    function change_date($date,$separator)
+	{
+		$data = explode($separator,$date);
+		$newDate = ($separator == "-")? $data[2]."/".$data[1]."/".$data[0] : $data[2]."-".$data[1]."-".$data[0];
+		return $newDate;
+	}
 
 	function show ()
 	{
@@ -92,17 +91,25 @@ class AnimalController
 
 	function selectById($id)
 	{
-		$sql = 'SELECT * FROM animal WHERE id = :id';
+		$sql = 'SELECT id,name, species, DATE_FORMAT(birth,:args) as birth, notes,`owner` FROM animal WHERE id = :id';
 		$sth = $this->db->prepare($sql);
-		$sth->execute(array(':id' => $id));
-		return $sth->fetch();
+		$sth->execute(array(
+			':args' => "%d/%c/%Y",
+			':id' => $id));
+		$temp = $sth->fetch();
+		$this->model->redefine($temp['id'],$temp['name'],$temp['species'],$temp['birth'],$temp['notes'],$temp['owner']);
 	}
 
 	function selectAll()
 	{
 		$list = null;
-		foreach ($this->db->query('SELECT * FROM animal') as $animal) {
-		 	$list[] = $animal;
+		$sql = 'SELECT id,name, species, DATE_FORMAT(birth,:args) as birth, notes,`owner` FROM animal';
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			'args' => "%d/%c/%Y"));
+
+		foreach ($sth->fetchAll() as $animal) {
+			$list[] = $animal;
 		};
 		return $list;
 	}
