@@ -34,7 +34,7 @@ CREATE TABLE `animal` (
   PRIMARY KEY (`id`),
   KEY `idowner_idx` (`owner`),
   CONSTRAINT `idowner` FOREIGN KEY (`owner`) REFERENCES `owner` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `animal` (
 
 LOCK TABLES `animal` WRITE;
 /*!40000 ALTER TABLE `animal` DISABLE KEYS */;
-INSERT INTO `animal` VALUES (12,'K965','Ruskey','2019-07-10','Alergico a gatos465',42),(32,'Teste','Puddle','2000-05-05','',2);
+INSERT INTO `animal` VALUES (12,'K965','Ruskey','2004-06-12','Alergico a gatos465',42),(42,'mais um','mais um','0000-00-00','mais um mais um',52);
 /*!40000 ALTER TABLE `animal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `owner` (
   `phone` int(9) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `owner` (
 
 LOCK TABLES `owner` WRITE;
 /*!40000 ALTER TABLE `owner` DISABLE KEYS */;
-INSERT INTO `owner` VALUES (2,'Joao2','naosabe@denada.com',6848,'Norte da Muralha'),(42,'Joao42','naosabe@denada.com',6848,'Norte da Muralha'),(52,'Joao52','naosabe@denada.com',6848,'Norte da Muralha');
+INSERT INTO `owner` VALUES (42,'Joao42','naosabe@denada.com',13321241,'Norte da Muralha'),(52,'Joao52','naosabe@denada.com',12412512,'Norte da Muralha'),(72,'s','sei@nao.com',21361474,'Dabs'),(82,'ainda','aqui',92580852,'Quem sabe');
 /*!40000 ALTER TABLE `owner` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -83,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-17 23:06:58
+-- Dump completed on 2015-09-18  1:16:08
